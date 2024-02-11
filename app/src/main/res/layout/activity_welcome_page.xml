@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bggreen"
+    tools:context=".WelcomePage">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:id="@+id/txt_welcome"
+        android:textSize="32dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_marginTop="150dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_continue"
+        android:layout_below="@+id/txt_welcome"
+        android:text="Please login to continue"
+        android:textSize="28sp"
+        android:textColor="@color/white"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_login"
+            android:text="Login"
+            android:textSize="20sp"
+            android:backgroundTint="@color/white"
+            android:textColor="@color/bg"
+            android:textStyle="bold"
+            android:layout_margin="10sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_register"
+            android:textColor="@color/white"
+            android:text="Register"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:backgroundTint="@color/bg"
+            android:layout_margin="10sp"/>
+
+    </LinearLayout>
+
+
+
+
+
+</RelativeLayout>
