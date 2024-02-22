@@ -1,5 +1,6 @@
 package com.example.qrcodegenerator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,8 +14,11 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -96,6 +100,7 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(Register.this, "Please fill all the fields",
                             Toast.LENGTH_SHORT).show();
                 } else if (Passwd.equals(Conf_passwd)) {
+                    addNewUser(Uname,Email,Phone,Passwd);
                     Intent i = new Intent(getApplicationContext(), Login.class);
                     startActivity(i);
 
@@ -106,5 +111,27 @@ public class Register extends AppCompatActivity {
             }
         });
 
+    }
+    public void addNewUser(String Uname,String Email,String Phone,String Passwd){
+        user.setUname(Uname);
+        user.setEmail(Email);
+        user.setPhone(Phone);
+        user.setPasswd(Passwd);
+
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ref.child(Phone).setValue(user);
+                Toast.makeText(Register.this, "User Registration was successful",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Register.this, "Error!User Registration failed!",
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
     }
 }
